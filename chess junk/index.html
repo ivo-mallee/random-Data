@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="queen piece.png" id="IMG">
+    <canvas id="myCanvas" width="64" height="64" style="border:1px solid #000000; display: none;"></canvas>
+    <script>
+    var T = " ={"
+    var CHANNEL = "";
+    window.onload = function() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("IMG");
+    ctx.drawImage(img, 0, 0);
+ 
+    for (var Y =0; Y<64; Y++) 
+    {
+        CHANNEL = "{";
+        for (var X =0; X<64; X++) 
+        {
+            var data = ctx.getImageData(X, Y, 1, 1).data;
+            CHANNEL += parseInt(data[0]/255);
+
+            
+
+
+            if (X < 63) {CHANNEL += ",";}
+        } 
+        CHANNEL += "}";
+        if (Y<63) {CHANNEL += ",";}
+        CHANNEL+= " <br>";
+        T += CHANNEL;
+    }
+    T+="};";
+    document.getElementById("OutArray").innerHTML = T;
+    }
+    </script>
+
+
+<a id="OutArray">
+
+
+
+
+
+
+</a>
+</body>
+</html>
